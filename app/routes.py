@@ -53,7 +53,7 @@ def dashboard():
         pendientes_notificar = Participacion.query.filter(
             Participacion.evento_id == e.id,
             # el estado puede estar impreso, generado o firmado
-            Participacion.estado_certificado.in_(['Impreso', 'Generado', 'Firmado']),
+            Participacion.estado_certificado.in_(['Impreso', 'Generado', 'Firmado', 'Por Imprimir']),
             Participacion.estado != 'ENTREGADO', # Si ya se entregó, no cuenta como pendiente
             ~Participacion.id.in_(sent_subquery)
         ).count()
